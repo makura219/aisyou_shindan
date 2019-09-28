@@ -1,0 +1,17 @@
+{
+  "name": "aisyou_shindan",
+  "description": "相性診断！",
+  "version": "0.0.1",
+  "homepage": "https://9ketsuki.info",
+  "author": {
+    "name": "9ketsuki",
+    "email": "official@9ketsuki.info"
+  },
+  "main": "server.js",
+  "engines": {
+    "node": ">= 10.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
