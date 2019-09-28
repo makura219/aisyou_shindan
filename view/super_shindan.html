@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>名前相性診断</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="./asset/css/main.css">
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+	</head>
+	<body>
+	<header>
+		<div class="logo">名前相性診断</div>
+		<div class="dotted"></div>
+	</header>
+	<main>
+		<div class="alert alert-light">
+			URLをコピーして相手に送ろう！
+            <input id="url" type="text" value="">
+		</div>
+	</main>
+        <script>
+        var socketio = io();
+        var roomid = getParam("s");
+        socketio.emit("join", {
+            'roomId': roomid
+        });
+            $("#url").val(location.protocol + "//" + location.host + "/shindan?s=" + roomid);
+        $(function () {
+            socketio.on('shindan_msg', function (shindan_data) {
+                const person1 = shindan_data.person1;
+                const person2 = shindan_data.person2;
+                let res = prompt(person1+"と"+person2+"の相性を診断してください。")
+                socketio.emit('kekka_msg', {
+                    'id': roomid,
+                    'aisyou':res
+                });
+            });
+        });
+
+        function getParam(name) {
+            let url = location.href;
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+            
+        </script>
+	</body>
+</html>

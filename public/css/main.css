@@ -1,0 +1,47 @@
+header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: white;
+    border-top: solid 2px #bc9aeb;
+}
+
+main {
+    margin-top: calc(1em + 40px + 30px);
+    padding: 10px;
+}
+
+body {background: #ef32d9;  /* fallback for old browsers */background: -webkit-linear-gradient(to right, #89fffd, #ef32d9);  /* Chrome 10-25, Safari 5.1-6 */background: linear-gradient(to right, #89fffd, #ef32d9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */font-family: 'Meiryo';}
+
+.dotted {
+    width
+    width: 100%;
+    border-bottom: dotted 5px #fff;
+    position: relative;
+    top: 3px;
+        }
+.logo {
+    padding: 10px;
+    }
+            .cloud{
+                background-image: url('../img/cloud.png');
+                width: 100%;
+                position: absolute;
+                left: 0px;
+                height: 80vh;
+            }
+            .btn_submit{
+                border: solid 1px #fff;
+    border-radius: 4px;
+    background-color: #ffffff96;
+    padding: 10px;
+    font-size: 1.3em;
+                
+            }
+            .start{
+                position: absolute;
+                left: 50%;
+                top:50%;
+                transform: translate(-50%,-50%);
+            }

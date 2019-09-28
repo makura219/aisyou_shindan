@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>名前相性診断</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="./asset/css/main.css">
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+	</head>
+	<body>
+	<header>
+		<div class="logo">名前相性診断</div>
+		<div class="dotted"></div>
+	</header>
+	<main>
+		<div class="alert alert-light">
+			<strong>使い方は簡単！</strong>　
+			<p>下の「診断師になる」ボタンを押すだけ！</p>
+			<p>ページ移動先にURLと使い方が書かれているよ！</p>
+		</div>
+        <div class="cloud">
+            <div class="start">
+                <button class="btn_submit" id="submit">診断士になる！</button>
+            </div>
+        </div>
+	</main>
+	<script>
+            $("body").on("click", "#submit", function () {
+                let id = getUniqueStr();
+                location.href = "./super_shindan?s=" + id;
+            })
+
+            function getUniqueStr(myStrong) {
+                var strong = 1000;
+                if (myStrong) strong = myStrong;
+                return new Date().getTime().toString(16) + Math.floor(strong * Math.random()).toString(16)
+            }
+    </script>
+	</body>
+</html>
